@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Sign Up</h1>
+<br>
+
+{% if error %}<h2>{% endif %}
+{{ error }}
+{% if error2 %}<br>{% endif %}{{ error2 }}{% if error2 %}</br>{% endif %}
+{% if error %}</h2>{% endif %}
+
+<form method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" name="username" class="form-control textfield" id="username" aria-describedby="usernameHelp">
+        <small id="usernameHelp" class="form-test text-muted">Your username must be unique. You'll be notified if someone has taken it already.</small>
+    </div>
+    <div class="form-group">
+        <label for="password1">Password:</label>
+        <input type="password" name="password1" class="form-control textfield" id="password1">
+    </div>
+    <div class="form-group">
+        <label for="password2">Confirm Password:</label>
+        <input type="password" name="password2" class="form-control textfield" id="password2">
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Sign Up</button>
+</form>
+
+{% endblock %}

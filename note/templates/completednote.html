@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Completed Items</h1>
+<br>
+
+{% for note in notes %}
+<ul>
+    <li>
+        {% if note.important %}<div class="alert alert-success" role="alert">
+        {% else %}<div class="alert alert-light" role="alert">{% endif %}
+            {% if note.important %}<span style="color: crimson;">{% endif %}
+            <strong><a href="{% url 'viewnote' note.id %}">{{ note.title }}</a></strong>
+            {% if note.important %}</span>{% endif %}
+            {% if note.memo %}<br>
+            {{ note.memo }}<br>{% endif %}
+            <strong>Date completed:</strong> {{ note.datecompleted|date:'M j Y H:i' }}
+        </div>
+    </li>
+</ul>
+
+{% endfor %}
+
+{% endblock %}

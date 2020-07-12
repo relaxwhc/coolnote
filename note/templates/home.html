@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="jumbotron" style="background-color: #fefefe;">
+    <h1 class="display-4">COOLNOTE</h1>
+    <br>
+    <p>Coolnote gives you the power to organize information.</p>
+    <p>You can create a new note item and write down your important stuff.</p>
+    <p>You can also use it as a task manager,<br> where you can mark your task as important, or mark it as completed.</p>
+    <br>
+
+    {% if user.is_authenticated %}
+
+    <a class="btn btn-primary btn-lg" href="{% url 'createnote' %}" role="button">Get Started!</a>
+
+    {% else %}
+    <table>
+        <tr>
+            <td style="padding: 10px;">
+                <a class="btn btn-primary btn-lg" href="{% url 'loginuser' %}" role="button">Login</a>
+            </td>
+            <td style="padding: 10px;">
+                <a class="btn btn-success btn-lg" href="{% url 'signupuser' %}" role="button">Sign Up</a>
+            </td>
+        </tr>
+    </table>
+    {% endif %}
+
+</div>
+
+{% endblock %}
