@@ -1,3 +1,5 @@
+<!--LIST OF EXISTING ITEM-->
+
 {% extends 'base.html' %}
 {% block content %}
 
@@ -5,29 +7,28 @@
 <br>
 
 {% if notes %}
+{% for note in notes %}
 
-    {% for note in notes %}
+<ul>
+    <li>
+        <!--DIV TAG FOR ALERT ELEMENTS, NORMAL ALERT: WHITE, IMPORTANT ALERT: GREEN-->
+        {% if note.important %}<div class="alert alert-success" role="alert">
+        {% else %}<div class="alert alert-light" role="alert">{% endif %}
+            <!--TITLE-->
+            <strong><a href="{% url 'view_note' note.id %}">{{ note.title }}</a></strong>
+            <!--MEMO-->
+            {% if note.memo %}<br>
+            {{ note.memo }}<br>{% endif %}
+        </div>
+    </li>
+</ul>
 
-    <ul>
-        <li>
-            {% if note.important %}<div class="alert alert-success" role="alert">
-            {% else %}<div class="alert alert-light" role="alert">{% endif %}
-                <strong><a href="{% url 'viewnote' note.id %}">{{ note.title }}</a></strong>
-                {% if note.memo %}<br>
-                {{ note.memo }}<br>{% endif %}
-            </div>
-
-        </li>
-    </ul>
-
-    {% endfor %}
-
+{% endfor %}
 {% else %}
 
     <h3>You don't have any note item,<br> click below to start a new one.</h3>
     <br>
-    <a role="button" class="btn btn-primary" href="{% url 'createnote' %}">Create New</a>
+    <a role="button" class="btn btn-primary" href="{% url 'create_note' %}">Create New</a>
 
 {% endif %}
-
 {% endblock %}

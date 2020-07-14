@@ -1,3 +1,5 @@
+<!--A LIST OF ITEMS MARKED AS COMPLETED-->
+
 {% extends 'base.html' %}
 {% block content %}
 
@@ -7,11 +9,12 @@
 {% for note in notes %}
 <ul>
     <li>
+        <!--OPENING DIV TAG-->
         {% if note.important %}<div class="alert alert-success" role="alert">
         {% else %}<div class="alert alert-light" role="alert">{% endif %}
-            {% if note.important %}<span style="color: crimson;">{% endif %}
-            <strong><a href="{% url 'viewnote' note.id %}">{{ note.title }}</a></strong>
-            {% if note.important %}</span>{% endif %}
+            <!--TITLE-->
+            <strong><a href="{% url 'view_note' note.id %}">{{ note.title }}</a></strong>
+            <!--MEMO-->
             {% if note.memo %}<br>
             {{ note.memo }}<br>{% endif %}
             <strong>Date completed:</strong> {{ note.datecompleted|date:'M j Y H:i' }}
@@ -20,5 +23,4 @@
 </ul>
 
 {% endfor %}
-
 {% endblock %}

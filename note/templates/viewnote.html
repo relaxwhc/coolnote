@@ -1,3 +1,5 @@
+<!--VIEW OR EDIT AN EXISTING ITEM-->
+
 {% extends 'base.html' %}
 {% block content %}
 
@@ -32,13 +34,13 @@
     </form>
         </td>
         <td style="padding: 10px;">
-            <form method="POST" action="{% url 'completenote' note.id %}">
+            <form method="POST" action="{% url 'complete_note' note.id %}">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-success">Complete</button>
             </form>
         </td>
         <td style="padding: 10px;">
-            <form method="POST" action="{% url 'deletenote' note.id %}">
+            <form method="POST" action="{% url 'delete_note' note.id %}">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger">Delete</button>
             </form>

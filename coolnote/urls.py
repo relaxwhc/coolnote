@@ -21,16 +21,16 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # AUTH
-    path('signup/', views.signupuser, name='signupuser'),
-    path('login/', views.loginuser, name='loginuser'),
-    path('logout/', views.logoutuser, name='logoutuser'),
+    path('signup/', views.signup_user, name='signup_user'),
+    path('login/', views.login_user, name='login_user'),
+    path('logout/', views.logout_user, name='logout_user'),
 
     # NOTE
     path('', views.home, name='home'),
-    path('current/', views.currentnote, name='currentnote'),
-    path('completed/', views.completednote, name='completednote'),
-    path('create/', views.createnote, name='createnote'),
-    path('note/<int:note_pk>', views.viewnote, name='viewnote'),
-    path('note/<int:note_pk>/complete>', views.completenote, name='completenote'),
-    path('note/<int:note_pk>/delete>', views.deletenote, name='deletenote'),
-]
+    path('current/', views.current_note, name='current_note'),
+    path('completed/', views.completed_note, name='completed_note'),
+    path('create/', views.create_note, name='create_note'),
+    path('note/<int:note_pk>', views.view_note, name='view_note'),
+    path('note/<int:note_pk>/complete>', views.complete_note, name='complete_note'),
+    path('note/<int:note_pk>/delete>', views.delete_note, name='delete_note'),
+    ]
